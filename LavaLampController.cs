@@ -124,8 +124,8 @@ public class LavaLampController : MonoBehaviour
 
             // update temperature
             float centerHeight = lampBounds.y * 0.5f;
-            float deltaTemp = (centerHeight - blobs[i].position.y) * temperatureGradient * Time.fixedDeltaTime / (lampBounds.y * 0.5f);
-            blobs[i].temperature += Mathf.Clamp(deltaTemp, -temperatureGradient, temperatureGradient);
+            float deltaTemp = (centerHeight - blobs[i].position.y) * temperatureGradient / (lampBounds.y * 0.5f);
+            blobs[i].temperature += Mathf.Clamp(deltaTemp, -temperatureGradient, temperatureGradient) * Time.fixedDeltaTime;
 
             // vertical acceleration from temperature
             float mass = Mathf.Max(0.001f, blobs[i].size);
